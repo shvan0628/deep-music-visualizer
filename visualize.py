@@ -4,7 +4,7 @@ import numpy as np
 import moviepy.editor as mpy
 import random
 import torch
-from scipy.misc import Image.fromarray
+from scipy.misc import toimage
 from tqdm import tqdm
 from pytorch_pretrained_biggan import (BigGAN, one_hot_from_names, truncated_noise_sample,
                                        save_as_images, display_in_terminal)
@@ -381,7 +381,7 @@ for i in tqdm(range(frame_lim)):
 
     #convert to image array and add to frames
     for out in output_cpu:    
-        im=np.array(Image.fromarray(out))
+        im=np.array(toimage(out))
         frames.append(im)
         
     #empty cuda cache
